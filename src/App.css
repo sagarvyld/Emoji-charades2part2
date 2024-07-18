@@ -61,6 +61,29 @@ line-height: 0%; /* 38.4px */
   padding: 0px;
   margin: 0px;
 }
+.back_button{
+  background:transparent;
+  border: none;
+}
+.upper_buttons{
+  display: flex;
+  width: 90vw;
+  position: absolute;
+  align-items: center;
+  justify-content: space-between;
+  top: 30px;
+}
+.skip_button{
+  color: var(--Neutral-Light, #FFF);
+text-align: center;
+font-family: Gilroy;
+font-size: 14px;
+font-style: normal;
+font-weight: 500;
+line-height: 100%; 
+background-color: transparent;
+border: none;
+}
 .SpotPage_Submit {
   color: var(--Neutral-Rich-Dark, #090909);
 font-family: Gilroy;
