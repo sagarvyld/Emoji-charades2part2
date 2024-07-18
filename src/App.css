@@ -4,6 +4,11 @@
   margin: 0 auto;
   padding: 0 auto;
 }
+:root {
+  --large: 12px;
+  --Dark-Dark--100: #0E1928;
+  --Light-Light--100: #FFF;
+}
 body, html {
   overflow: hidden;
   height: 100%;
@@ -11,4 +16,173 @@ body, html {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.heading_above{
+  position: absolute;
+  margin-bottom: 20px;
+ 
+ 
+}
+.you_got_a{
+  color: var(--Neutral-Light, #FFF);
+  text-align: center;
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-family: Gilroy;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 0%; 
+}
+.Emoji_charades{
+  color: var(--Accent-Accent--03-Accent-03, #FBFF08);
+text-align: center;
+font-feature-settings: 'clig' off, 'liga' off;
+font-family: "Saira SemiCondensed";
+font-size: 32px;
+font-style: normal;
+font-weight: 800;
+line-height: 0%; /* 38.4px */
+}
+
+.Lie_Information {
+  margin-bottom: -10px;
+  width: 88vw;
+  height: 8vh;
+  flex-shrink: 0;
+  border-radius: var(--x-Large, 62.4375rem);
+  background: var(--Dark-Dark--70, #384353);
+  display: flex;
+
+  align-items: center;
+  position: absolute;
+  top: 53vh;
+}
+.SpotPage_Submit {
+  display: flex;
+  width: 60vw;
+  padding: 0.9375rem 2rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
+  border: 0px;
+  border-radius: 0.75rem;
+  background: var(--Primary-Primary-100, #c6ff00);
+  position: fixed;
+  bottom: 7vh;
+}
+.User_picture {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+.guess_answer textarea:focus {
+  border-radius: var(--large, 12px);
+border: 1px solid var(--Dark-Dark--100, #0E1928);
+background: var(--Light-Light--100, #FFF);
+box-shadow: 0px 2px 0px 0px #000;
+outline: none;
+}
+
+
+.User_text {
+  padding-left: 3px;
+  color: var(--Neutral-Light, #fff);
+  font-feature-settings: "clig" off, "liga" off;
+  font-family: "Gilroy";
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%;
+}
+.User_picture img {
+  width: 18vw;
+  height: 7.85vh;
+}
+.app_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: -9999;
+}
+.guess_main_container{
+  margin-top: 321px;
+  gap: 17px;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.guess_svg{
+  position: absolute;
+  z-index: 3;
+}
+.guess_heading{
+  z-index: 3;
+  border-radius: 30px;
+background: var(--Light-Light--100, #FFF);
+padding: 3px 10px;
+color: var(--Dark-Dark--80, #273343);
+text-align: center;
+font-feature-settings: 'clig' off, 'liga' off;
+font-family: Gilroy;
+font-size: 12px;
+font-style: normal;
+font-weight: 400;
+line-height: 100%; /* 12px */
+}
+.guess_symbol{
+  z-index: 3;
+  
+}
+.guess_answer{
+  z-index: 3;
+}
+.guess_answer textarea::placeholder{
+  color: var(--Dark-Dark--50, #79889D);
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-family: Gilroy;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%;
+}
+.guess_answer textarea{
+   color: var(--Dark-Dark--100, #0E1928);
+font-feature-settings: 'clig' off, 'liga' off;
+font-family: Gilroy;
+font-size: 14px;
+font-style: normal;
+font-weight: 600;
+box-sizing: border-box;
+padding: .6rem;
+overflow: hidden;
+  resize: none;
+  border-radius: var(--large, 12px);
+  background: var(--Light-Light--100, #FFF);
+  z-index: 3;
+  width: 284px;
+height: 41px;
+flex-shrink: 0;
+}
+.guess_text{
+  z-index: 3;
+  color: var(--Light-Light--80, #E0E7F1);
+text-align: center;
+font-feature-settings: 'clig' off, 'liga' off;
+font-family: Gilroy;
+font-size: 17px;
+font-style: normal;
+font-weight: 600;
+line-height: 120%; 
+}
+body{
+  background: var(--Dark-Dark--100, #0E1928);
+}
+.background_svg{
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -9999;
 }
