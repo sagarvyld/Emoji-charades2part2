@@ -1,7 +1,17 @@
 import React from 'react'
 import GuessBox from '../components/GuessBox'
 import profile from "../assets/Profile.png" 
+import { useState,useEffect } from 'react'
 const Landingpage = () => {
+    const [isEmpty, setIsEmpty] = useState(true);
+    const [style,setstyle]=useState({});
+    useEffect(()=>{
+        if(isEmpty){
+            setstyle({opacity:0.5});
+        }else{
+            setstyle({});
+        }
+    },[isEmpty]);
   return (
     <div className='app_container'>
       <div className="background_svg">
@@ -14,7 +24,7 @@ const Landingpage = () => {
         <p className='you_got_a'>You Got a</p>
         <p className='Emoji_charades'>Emoji charades</p>
       </div>
-      <GuessBox/>
+      <GuessBox isEmpty={isEmpty} setIsEmpty={setIsEmpty}/>
       {(
         <div className="Lie_Information">
           <div className="User_picture">
@@ -27,7 +37,7 @@ const Landingpage = () => {
       )}
       {(
         <button className="SpotPage_Submit" >
-            Submit
+            <p style={style}>Send</p>
         </button>
       )}
     </div>

@@ -1,6 +1,14 @@
 import React from "react";
-
-const GuessBox = () => {
+import { useState,useEffect } from "react";
+const GuessBox = ({setIsEmpty, isEmpty}) => {
+    const handleTextareaChange = (event) => {
+        const value = event.target.value.trim(); 
+        if (value === '') {
+          setIsEmpty(true);
+        } else {
+          setIsEmpty(false);
+        }
+      };
   return (
     <div className="guess_main_container">
       <div className="guess_svg">
@@ -170,7 +178,9 @@ const GuessBox = () => {
 </svg>
 </div>
 <div className="guess_answer">
-  <textarea placeholder="Type answer here"></textarea>
+  <textarea 
+  onChange={handleTextareaChange}
+  placeholder="Type answer here"></textarea>
 </div>
 
     </div>

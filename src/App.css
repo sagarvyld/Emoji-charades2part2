@@ -57,7 +57,17 @@ line-height: 0%; /* 38.4px */
   position: absolute;
   top: 53vh;
 }
+.SpotPage_Submit p{
+  padding: 0px;
+  margin: 0px;
+}
 .SpotPage_Submit {
+  color: var(--Neutral-Rich-Dark, #090909);
+font-family: Gilroy;
+font-size: 14px;
+font-style: normal;
+font-weight: 700;
+line-height: 100%; /* 14px */
   display: flex;
   width: 60vw;
   padding: 0.9375rem 2rem;
