@@ -167,7 +167,7 @@ const RightGuess = ({right=true , word}) => {
 </defs>
 </svg>
 </div>
-        <div className="Movie_name">{word}</div>
+        <div className="Movie_name">{right?"Venom vs Spiderman":word}</div>
         {!right &&
         <div className="Wrong_div">
             <p className="right_answer_head">The Right answer is</p>
