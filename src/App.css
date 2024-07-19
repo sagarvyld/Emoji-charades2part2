@@ -73,6 +73,16 @@ line-height: 0%; /* 38.4px */
   justify-content: space-between;
   top: 30px;
 }
+.star1{
+  position: absolute;
+  top: -60px;
+  left:350px;
+}
+.star2{
+  position: absolute;
+  top: -40px;
+  right:350px;
+}
 .upper_cross_button{
   position: absolute;
   top: 10px;
