@@ -70,7 +70,7 @@ const Landingpage = ({skip , setskip}) => {
         <p className='you_got_a'>You Got a</p>
         <p className='Emoji_charades'>Emoji charades</p>
       </div>
-     {!send?<GuessBox isEmpty={isEmpty}  setword={setword} setIsEmpty={setIsEmpty}/>:<RightGuess right={right}/>}
+     {!send?<GuessBox isEmpty={isEmpty}  setword={setword} setIsEmpty={setIsEmpty}/>:<RightGuess word={word} right={right}/>}
       {(!send &&
         <div className="Lie_Information">
           <div className="User_picture">

@@ -1,6 +1,6 @@
 import React, { useEffect,useState } from 'react'
 
-const RightGuess = ({right=true}) => {
+const RightGuess = ({right=true , word}) => {
  
     const colorStyle = !right ? { color: 'var(--Info-Error-Error-Light, #FF4567)' } : { color: '' };
   return (
@@ -167,7 +167,7 @@ const RightGuess = ({right=true}) => {
 </defs>
 </svg>
 </div>
-        <div className="Movie_name">Venom Vs Spiderman</div>
+        <div className="Movie_name">{word}</div>
         {!right &&
         <div className="Wrong_div">
             <p className="right_answer_head">The Right answer is</p>
