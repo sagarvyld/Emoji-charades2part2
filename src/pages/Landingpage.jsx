@@ -58,7 +58,7 @@ const Landingpage = ({skip , setskip}) => {
     Skip
 </button>
     </div>
-:<div className='upper_cross_button'>
+:<div className='upper_cross_button' onClick={()=>setsend(false)}>
     <button><svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
 <circle cx="13" cy="13" r="12.25" stroke="white" stroke-width="1.5"/>
 <path d="M9 9L17 17" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
