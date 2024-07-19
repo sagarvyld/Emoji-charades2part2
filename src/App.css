@@ -76,12 +76,12 @@ line-height: 0%; /* 38.4px */
 .star1{
   position: absolute;
   top: -60px;
-  left:350px;
+  left:90%;
 }
 .star2{
   position: absolute;
   top: -40px;
-  right:350px;
+  right:90%;
 }
 .upper_cross_button{
   position: absolute;
