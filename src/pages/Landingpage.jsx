@@ -26,6 +26,8 @@ const Landingpage = ({skip , setskip}) => {
         if (!isEmpty) {
         if(word.toLowerCase()==="venom vs spiderman"){
             setright(true);
+        }else{
+          setright(false);
         }
           setsend(true);
         }
