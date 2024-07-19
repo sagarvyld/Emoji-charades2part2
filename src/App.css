@@ -73,6 +73,80 @@ line-height: 0%; /* 38.4px */
   justify-content: space-between;
   top: 30px;
 }
+.upper_cross_button{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: transparent;
+}
+.upper_cross_button button{
+  background: transparent;
+  border: none;
+}
+.right_guess{
+  margin-top: 431px !important;
+  border-radius: var(--large, 12px);
+background: var(--Accent-Accent--01-Accent-01--Dark, #6B36FF);
+width: 85%;
+}
+.Upper_tickmark{
+  margin-top: -20px;
+}
+.right_answer_head{
+  color: var(--Neutral-Light-alpha-90, rgba(255, 255, 255, 0.90));
+text-align: center;
+font-feature-settings: 'clig' off, 'liga' off;
+font-family: Gilroy;
+font-size: 14px;
+font-style: normal;
+font-weight: 500;
+line-height: 100%; /* 14px */
+}
+.Movie_name_wrong{
+  margin-bottom: 10px;
+  color: var(--Info-Success-Success-Light, #46FF9B);
+text-align: center;
+font-feature-settings: 'clig' off, 'liga' off;
+font-family: Gilroy;
+font-size: 26px;
+font-style: normal;
+font-weight: 900;
+line-height: 100%; /* 26px */
+}
+.Wrong_div{
+  width: 100.5%;
+
+  border-radius: 0px 0px var(--large, 12px) var(--large, 12px);
+background: var(--Dark-Dark--80, #273343);
+}
+.Movie_name{
+  color: var(--Neutral-Light, #FFF);
+text-align: center;
+font-feature-settings: 'clig' off, 'liga' off;
+font-family: Gilroy;
+font-size: 26px;
+font-style: normal;
+font-weight: 700;
+line-height: 100%; /* 26px */
+margin-bottom: 20px;
+}
+.Win_status{
+  color: var(--Info-Success-Success-Light, #46FF9B);
+text-align: center;
+font-family: Gilroy;
+font-size: 20px;
+font-style: normal;
+font-weight: 700;
+line-height: 100%; /* 20px */
+}
+.Right_guess_main_container{
+  height: 100vh;
+  width: 85%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .skip_button{
   color: var(--Neutral-Light, #FFF);
 text-align: center;
