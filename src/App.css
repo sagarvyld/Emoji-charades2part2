@@ -130,6 +130,13 @@ line-height: 100%;
   margin:0px;
   margin-top: 15px;
 }
+@media (max-height: 774px) {
+  .Lie_Information {
+    top: 70vh;
+    margin-bottom: 0px;
+  }
+}
+
 .skip_heading{
   color: var(--Light-Light--100, #FFF);
 text-align: center;
