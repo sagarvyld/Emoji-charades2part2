@@ -1,6 +1,9 @@
 import React from "react";
 import { useState,useEffect } from "react";
 const GuessBox = ({setIsEmpty, isEmpty ,setword}) => {
+    useEffect(()=>{
+setIsEmpty(true);
+    },[])
     const handleTextareaChange = (event) => {
         const value = event.target.value.trim(); 
        setword(value);
