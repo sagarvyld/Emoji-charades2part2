@@ -19,7 +19,7 @@ body, html {
 }
 .heading_above{
   position: absolute;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
  
  
 }
@@ -213,6 +213,7 @@ line-height: 100%; /* 26px */
 background: var(--Dark-Dark--80, #273343);
 }
 .Movie_name{
+  word-break: break-all;
   color: var(--Neutral-Light, #FFF);
 text-align: center;
 font-feature-settings: 'clig' off, 'liga' off;
