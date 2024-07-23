@@ -206,9 +206,17 @@ font-style: normal;
 font-weight: 900;
 line-height: 100%; /* 26px */
 }
+@keyframes trans {
+  0%{
+    transform: translateY(-90px);
+  }
+  100%{
+    transform: translateY(0px);
+  }
+}
 .Wrong_div{
-  width: 100.5%;
-
+  width: 85%;
+  animation:trans 3s forwards;
   border-radius: 0px 0px var(--large, 12px) var(--large, 12px);
 background: var(--Dark-Dark--80, #273343);
 }
@@ -270,7 +278,64 @@ line-height: 100%; /* 14px */
 background: var(--Primary-Primary-100, #C6FF00);
   position: fixed;
   bottom: 7vh;
+}.guess_main_container {
+  max-height: 100%;
+  position: relative;
 }
+.Wrong_div{
+  position: absolute;
+    top: 510px;
+}
+.guess_main_container .enter {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+.guess_main_container .enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms ease-in, transform 300ms ease-in;
+}
+
+.guess_main_container .exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.guess_main_container .exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 300ms ease-in, transform 300ms ease-in;
+}
+@keyframes text {
+  0%{
+    display: block !important;
+    transform: translateY(-1000px);
+  }
+ 20%, 40%, 80%, 100% {
+    transform: translateY(0);
+  }
+  10% {
+    transform: translateY(-60px);
+  }
+  30% {
+    transform: translateY(-35px);
+  }
+  50%{
+    transform :translateY(-20px);
+  }
+  90%{
+    transform: translateY(-10px);
+  }
+}
+.Animation_user{
+
+ animation:text 3s forwards;
+}
+.display_game{
+  display: none;
+}
+
 .User_picture {
   display: flex;
   justify-content: center;

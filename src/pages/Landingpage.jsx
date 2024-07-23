@@ -73,7 +73,7 @@ const Landingpage = ({skip , setskip}) => {
         <p className='you_got_a'>You Got a</p>
         <p className='Emoji_charades'>Emoji charades</p>
       </div>
-     {!send?<GuessBox isEmpty={isEmpty} forward={forward} setword={setword} setIsEmpty={setIsEmpty}/>:<RightGuess word={word} right={right}/>}
+     {!send?<GuessBox isEmpty={isEmpty} send={send} forward={forward} setword={setword} setIsEmpty={setIsEmpty}/>:<RightGuess send={send} word={word} right={right}/>}
       {(!send &&
         <div className="Lie_Information">
           <div className="User_picture">
@@ -84,6 +84,12 @@ const Landingpage = ({skip , setskip}) => {
           </div>
         </div>
       )}
+      {(send && !right &&
+        <div className={`Wrong_div`}>
+            <p className="right_answer_head">The Right answer is</p>
+            <div className="Movie_name_wrong">Venom Vs Spiderman</div>
+        </div>
+)}
       {( !send?
         <button className="SpotPage_Submit" onClick={()=>{forward()}}>
             <p style={style}>Send</p>

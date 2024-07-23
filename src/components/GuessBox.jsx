@@ -1,6 +1,6 @@
 import React from "react";
 import { useState,useEffect,useRef } from "react";
-const GuessBox = ({setIsEmpty, isEmpty ,setword , forward}) => {
+const GuessBox = ({setIsEmpty, isEmpty ,setword , forward , send}) => {
   const textareaRef = useRef(null);
 
   const handleFocus = () => {
@@ -55,7 +55,7 @@ setIsEmpty(true);
         }
       };
   return (
-    <div className="guess_main_container">
+    <div className={`guess_main_container`}>
       <div className="guess_svg">
         <svg
           width="320"
