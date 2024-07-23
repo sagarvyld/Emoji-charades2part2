@@ -20,16 +20,19 @@ const RightGuess = ({right=true , word}) => {
        </div>
         <div className="Upper_tickmark">
         {right?<svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M16.4376 4.37728C19.3731 -1.45909 27.6269 -1.45909 30.5624 4.37728C36.5252 1.81231 42.848 7.17125 41.3826 13.5481C47.5827 15.4547 49.0159 23.6651 43.8354 27.5987C47.3716 33.0847 43.2447 40.3048 36.773 39.9545C35.9907 46.453 28.2347 49.3045 23.5 44.8342C18.7653 49.3045 11.0093 46.453 10.227 39.9545C3.7553 40.3048 -0.371583 33.0847 3.16463 27.5987C-2.01593 23.6651 -0.582681 15.4547 5.61737 13.5481C4.15203 7.17125 10.4748 1.81231 16.4376 4.37728Z" fill="#46FF9B"/>
-<path d="M17.728 23.7201L22.096 28.0881L30.832 19.3521" stroke="#030406" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>:<svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M16.4376 4.37728C19.3731 -1.45909 27.6269 -1.45909 30.5624 4.37728C36.5252 1.81231 42.848 7.17125 41.3826 13.5481C47.5827 15.4547 49.0159 23.6651 43.8354 27.5987C47.3716 33.0847 43.2447 40.3048 36.773 39.9545C35.9907 46.453 28.2347 49.3045 23.5 44.8342C18.7653 49.3045 11.0093 46.453 10.227 39.9545C3.7553 40.3048 -0.371583 33.0847 3.16463 27.5987C-2.01593 23.6651 -0.582681 15.4547 5.61737 13.5481C4.15203 7.17125 10.4748 1.81231 16.4376 4.37728Z" fill="#FF4567"/>
-<path d="M17.728 22.7201L22.096 27.0881L30.832 18.3521" stroke="#090909" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M16.4376 4.37728C19.3731 -1.45909 27.6269 -1.45909 30.5624 4.37728C36.5252 1.81231 42.848 7.17125 41.3826 13.5481C47.5827 15.4547 49.0159 23.6651 43.8354 27.5987C47.3716 33.0847 43.2447 40.3048 36.773 39.9545C35.9907 46.453 28.2347 49.3045 23.5 44.8342C18.7653 49.3045 11.0093 46.453 10.227 39.9545C3.7553 40.3048 -0.371583 33.0847 3.16463 27.5987C-2.01593 23.6651 -0.582681 15.4547 5.61737 13.5481C4.15203 7.17125 10.4748 1.81231 16.4376 4.37728Z" fill="#00D562"/>
+<path d="M17.728 23.7201L22.096 28.0881L30.832 19.3521" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
+:<svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M16.4376 4.37728C19.3731 -1.45909 27.6269 -1.45909 30.5624 4.37728C36.5252 1.81231 42.848 7.17125 41.3826 13.5481C47.5827 15.4547 49.0159 23.6651 43.8354 27.5987C47.3716 33.0847 43.2447 40.3048 36.773 39.9545C35.9907 46.453 28.2347 49.3045 23.5 44.8342C18.7653 49.3045 11.0093 46.453 10.227 39.9545C3.7553 40.3048 -0.371583 33.0847 3.16463 27.5987C-2.01593 23.6651 -0.582681 15.4547 5.61737 13.5481C4.15203 7.17125 10.4748 1.81231 16.4376 4.37728Z" fill="#FF406A"/>
+<path d="M18.64 29.2L29.64 18.2" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M29.64 29.2L18.64 18.2" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
 }
 
         </div>
-        <div className="Win_status" style={colorStyle}>{!right?"Oops! Wrong guess":"You've Won!"}</div>
+        <div className="Win_status" >{!right?"Oops! Wrong guess":"You've Won!"}</div>
         <div className="guess_text">Guess the movie</div>
         <div className="guess_symbol"> <svg width="255" height="60" viewBox="0 0 255 60" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g filter="url(#filter0_dii_311_31825)">
@@ -167,7 +170,7 @@ const RightGuess = ({right=true , word}) => {
 </defs>
 </svg>
 </div>
-        <div className="Movie_name">{right?"Venom vs Spiderman":word}</div>
+        <div className="Movie_name" style={colorStyle}>{right?"Venom vs Spiderman":word}</div>
         {!right &&
         <div className="Wrong_div">
             <p className="right_answer_head">The Right answer is</p>

@@ -17,6 +17,7 @@ const Landingpage = ({skip , setskip}) => {
     const [isEmpty, setIsEmpty] = useState(true);
     const [style,setstyle]=useState({});
     const [send,setsend]=useState(false);
+
     useEffect(()=>{
         if(right && send){
             triggerConfetti();
@@ -72,7 +73,7 @@ const Landingpage = ({skip , setskip}) => {
         <p className='you_got_a'>You Got a</p>
         <p className='Emoji_charades'>Emoji charades</p>
       </div>
-     {!send?<GuessBox isEmpty={isEmpty}  setword={setword} setIsEmpty={setIsEmpty}/>:<RightGuess word={word} right={right}/>}
+     {!send?<GuessBox isEmpty={isEmpty} forward={forward} setword={setword} setIsEmpty={setIsEmpty}/>:<RightGuess word={word} right={right}/>}
       {(!send &&
         <div className="Lie_Information">
           <div className="User_picture">
@@ -83,10 +84,13 @@ const Landingpage = ({skip , setskip}) => {
           </div>
         </div>
       )}
-      {( !send &&
+      {( !send?
         <button className="SpotPage_Submit" onClick={()=>{forward()}}>
             <p style={style}>Send</p>
-        </button>
+        </button>:
+        <button className="SpotPage_Submit">
+        <p>Close</p>
+    </button>
       )}
     </div>
   )

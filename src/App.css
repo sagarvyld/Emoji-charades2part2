@@ -225,7 +225,7 @@ line-height: 100%; /* 26px */
 margin-bottom: 20px;
 }
 .Win_status{
-  color: var(--Info-Success-Success-Light, #46FF9B);
+  color: var(--Light-Light--100, #FFF);
 text-align: center;
 font-family: Gilroy;
 font-size: 20px;
@@ -266,8 +266,8 @@ line-height: 100%; /* 14px */
   align-items: center;
   gap: 0.625rem;
   border: 0px;
-  border-radius: 0.75rem;
-  background: var(--Primary-Primary-100, #c6ff00);
+  border-radius: 42px;
+background: var(--Primary-Primary-100, #C6FF00);
   position: fixed;
   bottom: 7vh;
 }

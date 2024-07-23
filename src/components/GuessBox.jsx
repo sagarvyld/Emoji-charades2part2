@@ -1,6 +1,47 @@
 import React from "react";
-import { useState,useEffect } from "react";
-const GuessBox = ({setIsEmpty, isEmpty ,setword}) => {
+import { useState,useEffect,useRef } from "react";
+const GuessBox = ({setIsEmpty, isEmpty ,setword , forward}) => {
+  const textareaRef = useRef(null);
+
+  const handleFocus = () => {
+    if (textareaRef.current) {
+      textareaRef.current.setAttribute('inputmode', 'text');
+      textareaRef.current.setAttribute('enterkeyhint', 'done');
+    }
+  };
+
+  const handleBlur = () => {
+    if (textareaRef.current) {
+      textareaRef.current.removeAttribute('inputmode');
+      textareaRef.current.removeAttribute('enterkeyhint');
+    }
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault(); 
+      if (textareaRef.current) {
+        textareaRef.current.blur();
+      }
+    }
+  };
+
+  useEffect(() => {
+    const textarea = textareaRef.current;
+    if (textarea) {
+      textarea.addEventListener('focus', handleFocus);
+      textarea.addEventListener('blur', handleBlur);
+      textarea.addEventListener('keypress', handleKeyPress);
+    }
+
+    return () => {
+      if (textarea) {
+        textarea.removeEventListener('focus', handleFocus);
+        textarea.removeEventListener('blur', handleBlur);
+        textarea.removeEventListener('keypress', handleKeyPress);
+      }
+    };
+  }, []);
     useEffect(()=>{
 setIsEmpty(true);
     },[])
@@ -183,6 +224,8 @@ setIsEmpty(true);
 </div>
 <div className="guess_answer">
   <textarea 
+  ref={textareaRef}
+
   onChange={handleTextareaChange}
   placeholder="Type answer here"></textarea>
 </div>
