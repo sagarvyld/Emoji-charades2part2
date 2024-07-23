@@ -2,27 +2,6 @@ import React, { useEffect,useState } from 'react'
 
 const RightGuess = ({right=true , word ,send}) => {
         const [class_set, setclass]=useState("");
-        const [class_set2,setclass2]=useState("");
-        const [display,setdisplay]=useState(false);
-        const [display1,setdisplay1]=useState(false);
-        const [display2,setdisplay2]=useState(false);
-        const [display3,setdisplay3]=useState(false);
-        useEffect(()=>{
-          
-              setdisplay(true);
-              setTimeout(() => {
-                setdisplay1(true);
-                setTimeout(() => {
-                  setdisplay2(true);
-                  setTimeout(() => {
-                    setdisplay3(true);
-                  }, 1000);
-                }, 1000);
-                
-              }, 1000);
-             
-            
-        },[])
     const colorStyle = !right ? { color: 'var(--Info-Error-Error-Light, #FF4567)' } : { color: '' };
   return (
 
@@ -53,9 +32,9 @@ const RightGuess = ({right=true , word ,send}) => {
 }
 
         </div>
-        <div className={`Win_status ${display ? 'Animation_user' : 'display_game'}`} >{!right?"Oops! Wrong guess":"You've Won!"}</div>
-        <div className={`guess_text ${display1 ? 'Animation_user' : 'display_game'}`}>Guess the movie</div>
-        <div className={`guess_symbol ${display2 ? 'Animation_user' : 'display_game'}`} > <svg width="255" height="60" viewBox="0 0 255 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <div className={`Win_status `} >{!right?"Oops! Wrong guess":"You've Won!"}</div>
+        <div className={`guess_text `}>Guess the movie</div>
+        <div className={`guess_symbol `} > <svg width="255" height="60" viewBox="0 0 255 60" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g filter="url(#filter0_dii_311_31825)">
 <path d="M48.9045 26.2987C48.9045 39.5738 38.146 50.3263 24.873 50.3263C11.6 50.3263 0.849121 39.5662 0.849121 26.2987C0.849121 13.0311 11.6076 2.271 24.873 2.271C38.1385 2.271 48.9045 13.0311 48.9045 26.2987Z" fill="#FFD21F"/>
 <path d="M13.9337 27.2763C12.97 27.2763 12.187 26.4933 12.187 25.5296V21.3437C12.187 20.38 12.97 19.597 13.9337 19.597C14.8973 19.597 15.6803 20.38 15.6803 21.3437V25.5296C15.6803 26.4933 14.8973 27.2763 13.9337 27.2763Z" fill="#403408"/>
@@ -191,8 +170,13 @@ const RightGuess = ({right=true , word ,send}) => {
 </defs>
 </svg>
 </div>
-       <div className={`Movie_name ${display3 ? 'Animation_user' : 'display_game'}`} style={colorStyle}>{right?"Venom vs Spiderman":word}</div>
-        
+       <div className={`Movie_name`} style={colorStyle}>{right?"Venom vs Spiderman":word}</div>
+       {(!right &&
+        <div className={`Wrong_div`}>
+            <p className="right_answer_head">The Right answer is</p>
+            <div className="Movie_name_wrong">Venom Vs Spiderman</div>
+        </div>
+)}
     </div>
   )
 }

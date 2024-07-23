@@ -84,12 +84,6 @@ const Landingpage = ({skip , setskip}) => {
           </div>
         </div>
       )}
-      {(send && !right &&
-        <div className={`Wrong_div`}>
-            <p className="right_answer_head">The Right answer is</p>
-            <div className="Movie_name_wrong">Venom Vs Spiderman</div>
-        </div>
-)}
       {( !send?
         <button className="SpotPage_Submit" onClick={()=>{forward()}}>
             <p style={style}>Send</p>
