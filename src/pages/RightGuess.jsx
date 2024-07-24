@@ -1,7 +1,7 @@
 import React, { useEffect,useState } from 'react'
 
 const RightGuess = ({right=true , word ,send}) => {
-        const [class_set, setclass]=useState("");
+const [class_set, setclass]=useState("");
     const colorStyle = !right ? { color: 'var(--Info-Error-Error-Light, #FF4567)' } : { color: '' };
   return (
 
@@ -170,7 +170,7 @@ const RightGuess = ({right=true , word ,send}) => {
 </defs>
 </svg>
 </div>
-       <div className={`Movie_name`} style={colorStyle}>{right?"Venom vs Spiderman":word}</div>
+       <div className={`Movie_name ${right?'margin_it':''}`} style={colorStyle}>{right?"Venom vs Spiderman":word}</div>
        {(!right &&
         <div className={`Wrong_div`}>
             <p className="right_answer_head">The Right answer is</p>
