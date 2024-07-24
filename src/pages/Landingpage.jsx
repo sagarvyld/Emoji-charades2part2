@@ -4,7 +4,6 @@ import profile from "../assets/Profile.png"
 import { useState,useEffect } from 'react'
 import Confetti from 'react-confetti';
 import RightGuess from './RightGuess'
-import SkipBox from '../components/SkipBox';
 const Landingpage = ({skip , setskip}) => {
     const [word,setword]=useState('');
     const [right,setright]=useState(false);
