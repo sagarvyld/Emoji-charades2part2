@@ -41,7 +41,7 @@ font-family: "Saira SemiCondensed";
 font-size: 32px;
 font-style: normal;
 font-weight: 800;
-line-height: 0%; /* 38.4px */
+line-height: 0%; 
 }
 
 .Lie_Information {
@@ -100,7 +100,7 @@ font-family: Gilroy;
 font-size: 14px;
 font-style: normal;
 font-weight: 500;
-line-height: 140%; /* 19.6px */
+line-height: 140%; 
   margin: 0px;
 }
 .cancel_it{
@@ -110,7 +110,7 @@ font-family: Gilroy;
 font-size: 14px;
 font-style: normal;
 font-weight: 700;
-line-height: 100%; /* 14px */
+line-height: 100%; 
 border: none;
 background-color: transparent;
 }
@@ -193,7 +193,7 @@ font-family: Gilroy;
 font-size: 14px;
 font-style: normal;
 font-weight: 500;
-line-height: 100%; /* 14px */
+line-height: 100%; 
 }
 .Movie_name_wrong{
   margin-bottom: 10px;
@@ -204,7 +204,7 @@ font-family: Gilroy;
 font-size: 26px;
 font-style: normal;
 font-weight: 900;
-line-height: 100%; /* 26px */
+line-height: 100%;
 }
 .Wrong_div{
   width: 100.5%;
@@ -233,7 +233,7 @@ font-family: Gilroy;
 font-size: 20px;
 font-style: normal;
 font-weight: 700;
-line-height: 100%; /* 20px */
+line-height: 100%; 
 }
 .Right_guess_main_container{
   height: 100vh;
@@ -260,7 +260,7 @@ font-family: Gilroy;
 font-size: 14px;
 font-style: normal;
 font-weight: 700;
-line-height: 100%; /* 14px */
+line-height: 100%; 
   display: flex;
   width: 60vw;
   padding: 0.9375rem 2rem;
@@ -363,7 +363,7 @@ font-family: Gilroy;
 font-size: 12px;
 font-style: normal;
 font-weight: 400;
-line-height: 100%; /* 12px */
+line-height: 100%; 
 }
 .guess_symbol{
   z-index: 3;
