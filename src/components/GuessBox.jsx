@@ -9,6 +9,7 @@ const GuessBox = ({setIsEmpty, isEmpty ,setword ,topic ,emojies, answer, forward
   function countWords(sentence) {
     return sentence.trim().split(/\s+/).filter(Boolean).length;
   }
+
   useEffect(() => {
     setword('');
     const timer = setTimeout(() => {
@@ -40,10 +41,6 @@ const GuessBox = ({setIsEmpty, isEmpty ,setword ,topic ,emojies, answer, forward
       }
     }
   };
-
-    useEffect(()=>{
-setIsEmpty(true);
-    },[])
     const handleTextareaChange = (event) => {
         const value = event.target.value.trim(); 
        setword(value);
@@ -53,6 +50,7 @@ setIsEmpty(true);
           setIsEmpty(false);
         }
       };
+    
   return (
     <div className={`guess_main_container ${send?'answer_box':''}`}>
       {send && <div className={`Upper_tickmark ${kill?'Animation_div2':''}`} style={{marginTop:right &&'-21px' , marginBottom:right && '11px'}}>

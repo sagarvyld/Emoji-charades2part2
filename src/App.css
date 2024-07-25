@@ -294,7 +294,7 @@ line-height: 100%;
 .Wrong_div{
 
   margin-top: 5px;
-  width: 360px;
+  width: 361px;
   border-radius: 0px 0px var(--large, 12px) var(--large, 12px);
 background: var(--Dark-Dark--80, #273343);
 }

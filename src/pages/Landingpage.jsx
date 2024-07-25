@@ -13,6 +13,10 @@ const Landingpage = ({skip , setskip}) => {
     const [answer,setanswer]=useState('');
     const [emojies,setemoji]=useState('');
     const [data_it,setdata_it]=useState(null);
+    const backward=()=>{
+      setsend(false);
+      setIsEmpty(true);
+    }
     const triggerConfetti = () => {
       setShowConfetti(true);
       setTimeout(() => setShowConfetti(false), 5000); 
@@ -55,10 +59,90 @@ const Landingpage = ({skip , setskip}) => {
             triggerConfetti();
         }
     },[right , send])
+    function removeCommonWords(words) {
+      const commonWords = new Set(["a", "an", "the", "of", "and", "to", "in", "on", "for", "with"]);
+      return words.filter(word => !commonWords.has(word));
+  }
+  
+  function isPartialMatch(movieWords, userWords) {
+      const movieSet = new Set(movieWords);
+      const userSet = new Set(userWords);
+  
+      for (let word of userSet) {
+          if (movieSet.has(word)) {
+              return true;
+          }
+      }
+      return false;
+  }
+  
+  function isFlexibleOrderMatch(movieWords, userWords) {
+      return movieWords.sort().join(" ") === userWords.sort().join(" ");
+  }
+  
+  function isCommonAbbreviationMatch(movieName, userInput) {
+      const abbreviations = {
+          "doctor": "dr",
+          "saint": "st",
+          "mount": "mt",
+          "street": "st",
+          "fort": "ft"
+      };
+  
+      for (let [full, abbrev] of Object.entries(abbreviations)) {
+        console.log("checking");
+          if (movieName.includes(full) && userInput.includes(abbrev)) {
+              return true;
+          }
+      }
+      return false;
+  }
+  
+  function isMinorMisspellingMatch(movieWords, userWords) {
+      if (movieWords.length !== userWords.length) return false;
+  
+      let count = 0;
+      for (let i = 0; i < movieWords.length; i++) {
+          if (movieWords[i] !== userWords[i]) {
+              count++;
+              if (count > 1) {
+                  return false;
+              }
+          }
+      }
+      return count <= 1;
+  }
+  
+  function isCorrectGuess(movieName, userInput) {
+    console.log("checking1")
+      movieName = movieName.toLowerCase().trim();
+      userInput = userInput.toLowerCase().trim();
+      const movieWords = removeCommonWords(movieName.split(/\W+/));
+      const userWords = removeCommonWords(userInput.split(/\W+/));
+      if (movieName === userInput) {
+          return true;
+      }
+      if (isPartialMatch(movieWords, userWords)) {
+          return true;
+      }
+      if (isFlexibleOrderMatch(movieWords, userWords)) {
+          return true;
+      }
+      if (isCommonAbbreviationMatch(movieName, userInput)) {
+        console.log("ca",isCommonAbbreviationMatch(movieName, userInput))
+          return true;
+      }
+      if (isMinorMisspellingMatch(movieWords, userWords)) {
+          return true;
+      }
+  
+      return false;
+  }
     const forward = () => {
+      console.log("forward")
         if (!isEmpty) {
-        if(word.toLowerCase()===answer.toLowerCase()){
-            setright(true);
+        if(isCorrectGuess(word.toLowerCase(),answer.toLowerCase())){
+          setright(true);
         }else{
           setright(false);
         }
@@ -98,7 +182,7 @@ fetch(url, {
         }else{
             setstyle({});
         }
-    },[isEmpty]);
+    },[isEmpty,send]);
   return (
     <div className='app_container'>
     
@@ -120,7 +204,7 @@ fetch(url, {
     Skip
 </button>
     </div>
-:<div className='upper_cross_button' onClick={()=>setsend(false)}>
+:<div className='upper_cross_button' onClick={()=>backward()}>
     <button><svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
 <circle cx="13" cy="13" r="12.25" stroke="white" stroke-width="1.5"/>
 <path d="M9 9L17 17" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -147,7 +231,7 @@ fetch(url, {
         <button className="SpotPage_Submit" onClick={()=>{forward()}}>
             <p style={style}>Send</p>
         </button>:
-        <button className="SpotPage_Submit" onClick={()=>setsend(false)}>
+        <button className="SpotPage_Submit" onClick={()=>backward()}>
         <p>Close</p>
     </button>
       )}
