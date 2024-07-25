@@ -43,13 +43,13 @@ const Landingpage = ({skip , setskip}) => {
     <div className='app_container'>
     
           {showConfetti && <Confetti />}
-      {!send ?<div className="background_svg">
+      {<div className="background_svg">
       <svg width="360" height="250" viewBox="0 0 360 250" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M-12 -97C16.3333 -95.3333 137.593 89.8627 95 62.5C12.5 9.5 -5.5 80.5 43.5 108.5C108 145.357 218.245 240 144 240C95 240 113 137.5 191.5 159.5C270 181.5 313.387 225.588 336.5 172.5C368.5 99 257.5 52 311 -23C360.614 -92.5529 388 -32 388 0.5" stroke="#1D2939" stroke-width="19"/>
 </svg>
       
 
-      </div>:<div className='background_svg' style={{height:"360px" ,width:"360px"}}></div>
+      </div>
 }
       {!send ?<div className="upper_buttons">
      <button className="back_button"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -72,7 +72,7 @@ const Landingpage = ({skip , setskip}) => {
         <p className='you_got_a'>You Got a</p>
         <p className='Emoji_charades'>Emoji charades</p>
       </div>
-     {!send?<GuessBox isEmpty={isEmpty} send={send} forward={forward} setword={setword} setIsEmpty={setIsEmpty}/>:<RightGuess send={send} word={word} right={right}/>}
+     <GuessBox isEmpty={isEmpty} send={send} forward={forward} setword={setword} setIsEmpty={setIsEmpty} right={right} word={word}/>
       {(!send &&
         <div className="Lie_Information">
           <div className="User_picture">

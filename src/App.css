@@ -130,6 +130,37 @@ line-height: 100%;
   margin:0px;
   margin-top: 15px;
 }
+@keyframes trans {
+  0%{
+    opacity: 0;
+    z-index: 0;
+    transform: translateY(-190px);
+  }
+  50%{
+    z-index: 0;
+    transform: translateY(70px);
+  }
+  100%{
+    z-index: 30;
+    transform: translateY(0);
+  }
+}
+
+@keyframes trans2 {
+  0%{
+    z-index: 0;
+    transform: translateY(190px);
+  }
+  50%{
+    z-index: 0;
+    transform: translateY(-70px);
+  }
+  100%{
+    z-index: 30;
+    transform: translateY(0);
+  }
+}
+
 @media (max-height: 774px) {
   .Lie_Information {
     top: 70vh;
@@ -183,7 +214,8 @@ background: var(--Accent-Accent--01-Accent-01--Dark, #6B36FF);
 width: 85%;
 }
 .Upper_tickmark{
-  margin-top: -20px;
+  margin-top: 100px;
+  z-index: 30;
 }
 .right_answer_head{
   color: var(--Neutral-Light-alpha-90, rgba(255, 255, 255, 0.90));
@@ -206,13 +238,62 @@ font-style: normal;
 font-weight: 900;
 line-height: 100%;
 }
-.Wrong_div{
-  width: 100.5%;
+.svg_star{
+  margin-right: 40px;
+  margin-top: 30px;
+}
+._notsend_width{
+  transition: width 0.5s ease-in-out, height 0.5s ease-in-out; 
+  width: 330px;
+  height: 247px;
+}
+._send_width{
+  transition: width 0.5s ease-in-out, height 0.5s ease-in-out; 
+  width: 350px;
+  height: 297px;
+  position: absolute;
+ 
+}
+._realsvg{
+  display: flex;
+  justify-content: space-between;
+  border-radius: var(--large, 12px);
+  background: var(--Accent-Accent--01-Accent-01--Dark, #6B36FF);
+}
 
+.svg_answer {
+  width: 350px;
+  height: 325px;
+}
+
+.svg_normal {
+  width: 320px;
+  height: 220px;
+}
+
+.svg_answer{
+  margin-top: 103px;
+}
+.Animation_div{
+  animation:trans 3s forwards;
+}
+.Animation_div2{
+  animation:trans2 3s forwards;
+}
+
+.Wrong_div{
+
+  margin-top: 5px;
+  width: 352px;
   border-radius: 0px 0px var(--large, 12px) var(--large, 12px);
 background: var(--Dark-Dark--80, #273343);
 }
+
 .Movie_name{
+  width: 330px;
+ margin-bottom: 50px;
+ height: 0px;
+  z-index: 30;
   word-break: break-all;
   color: var(--Neutral-Light, #FFF);
 text-align: center;
@@ -227,6 +308,7 @@ line-height: 100%;
   margin-bottom: 20px;
 }
 .Win_status{
+  margin-top: -5px;
   color: var(--Light-Light--100, #FFF);
 text-align: center;
 font-family: Gilroy;
@@ -234,6 +316,7 @@ font-size: 20px;
 font-style: normal;
 font-weight: 700;
 line-height: 100%; 
+z-index: 30;
 }
 .Right_guess_main_container{
   height: 100vh;
