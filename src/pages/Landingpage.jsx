@@ -75,19 +75,32 @@ const Landingpage = ({ skip, setskip }) => {
   }
 
   function isPartialMatch(movieWords, userWords) {
-    if (userWords.length < 2) {
-      return false;
+    let AnsLen = movieWords.length;
+    
+    if (AnsLen > 3) {
+        let m = 0;
+        const movieSet = new Set(movieWords);
+        const userSet = new Set(userWords);
+        
+        for (let word of userSet) {
+            if (movieSet.has(word)) {
+                m++;
+            }
+        }
+        return (m === AnsLen || m === AnsLen - 1);
+    } else {
+        let m = 0;
+        const movieSet = new Set(movieWords);
+        const userSet = new Set(userWords);
+        
+        for (let word of userSet) {
+            if (movieSet.has(word)) {
+                m++;
+            }
+        }
+        return (m === AnsLen);
     }
-    const movieSet = new Set(movieWords);
-    const userSet = new Set(userWords);
-
-    for (let word of userSet) {
-      if (movieSet.has(word)) {
-        return true;
-      }
-    }
-    return false;
-  }
+}
 
   function isFlexibleOrderMatch(movieWords, userWords) {
     return movieWords.sort().join(" ") === userWords.sort().join(" ");
@@ -103,7 +116,6 @@ const Landingpage = ({ skip, setskip }) => {
     };
 
     for (let [full, abbrev] of Object.entries(abbreviations)) {
-      console.log("checking");
       if (movieName.includes(full) && userInput.includes(abbrev)) {
         return true;
       }
@@ -131,6 +143,7 @@ const Landingpage = ({ skip, setskip }) => {
     movieName = movieName.toLowerCase().trim();
     userInput = userInput.toLowerCase().trim();
     const movieWords = removeCommonWords(movieName.split(/\W+/));
+    console.log("mov", movieWords);
     const userWords = removeCommonWords(userInput.split(/\W+/));
     if (movieName === userInput) {
       return true;
@@ -154,7 +167,7 @@ const Landingpage = ({ skip, setskip }) => {
   const forward = () => {
     console.log("forward");
     if (!isEmpty) {
-      if (isCorrectGuess(word.toLowerCase(), answer.toLowerCase())) {
+      if (isCorrectGuess(answer.toLowerCase(), word.toLowerCase())) {
         setright(true);
       } else {
         setright(false);
