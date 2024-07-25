@@ -8,11 +8,43 @@ const Landingpage = ({skip , setskip}) => {
     const [word,setword]=useState('');
     const [right,setright]=useState(false);
     const [showConfetti, setShowConfetti] = useState(false);
+    const [message,setmessage]=useState('');
+    const [topic,settopic]=useState('');
+    const [answer,setanswer]=useState('');
+    const [emojies,setemoji]=useState('');
     const triggerConfetti = () => {
       setShowConfetti(true);
       setTimeout(() => setShowConfetti(false), 5000); 
     };
-   
+    useEffect(() => {
+      const urlParams= new URLSearchParams(window.location.search);
+      const url = "https://vyld-cb-dev-api.vyld.io/api/v1/activity-games/game"; 
+      const params = new URLSearchParams({
+        activityId: urlParams.get('activityId'), 
+      });
+      fetch(`${url}?${params}`, {
+        method: "GET",
+        headers: {    
+        },
+      })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json(); 
+      })
+      .then((data) => {
+        const Data_coming=data.data;
+       console.log(Data_coming);
+       setmessage(Data_coming.message);
+        settopic(Data_coming.reqD[0].topicArea);
+        setanswer(Data_coming.reqD[1].topic);
+        setemoji(Data_coming.reqD[2].Emoji);
+      })
+      .catch((error) => {
+        console.error("Error:", error); 
+      });
+    }, []);
     const [isEmpty, setIsEmpty] = useState(true);
     const [style,setstyle]=useState({});
     const [send,setsend]=useState(false);
@@ -24,7 +56,7 @@ const Landingpage = ({skip , setskip}) => {
     },[right , send])
     const forward = () => {
         if (!isEmpty) {
-        if(word.toLowerCase()==="venom vs spiderman"){
+        if(word.toLowerCase()===answer.toLowerCase()){
             setright(true);
         }else{
           setright(false);
@@ -72,14 +104,14 @@ const Landingpage = ({skip , setskip}) => {
         <p className='you_got_a'>You Got a</p>
         <p className='Emoji_charades'>Emoji charades</p>
       </div>
-     <GuessBox isEmpty={isEmpty} send={send} forward={forward} setword={setword} setIsEmpty={setIsEmpty} right={right} word={word}/>
-      {(!send &&
+     <GuessBox emojies={emojies} isEmpty={isEmpty} topic={topic} answer={answer} send={send} forward={forward} setword={setword} setIsEmpty={setIsEmpty} right={right} word={word}/>
+      {(!send && message!=="" &&
         <div className="Lie_Information">
           <div className="User_picture">
             <img src={profile} alt="User" />
           </div>
           <div className="User_text">
-          Wow !! that’s a tough one and I have managed something let’s see if you get it
+          {message}
           </div>
         </div>
       )}

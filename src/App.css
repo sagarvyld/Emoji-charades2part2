@@ -57,6 +57,17 @@ line-height: 0%;
   position: absolute;
   top: 53vh;
 }
+.emoji-container {
+  max-width: 355px;
+  flex-wrap: wrap;
+  display: flex;
+  gap: 10px; 
+}
+
+.emoji {
+  font-size: 2rem; 
+  display: inline-block; 
+}
 .SpotPage_Submit p{
   transition: all 0.5s ease-in-out; 
   padding: 0px;
@@ -245,12 +256,12 @@ line-height: 100%;
 }
 ._notsend_width{
   transition: width 0.5s ease-in-out, height 0.5s ease-in-out; 
-  width: 330px;
-  height: 247px;
+  width: 360px;
+  height: 248px;
 }
 ._send_width{
   transition: width 0.5s ease-in-out, height 0.5s ease-in-out; 
-  width: 350px;
+  width: 360px;
   height: 297px;
 }
 ._realsvg{
@@ -283,7 +294,7 @@ line-height: 100%;
 .Wrong_div{
 
   margin-top: 5px;
-  width: 352px;
+  width: 360px;
   border-radius: 0px 0px var(--large, 12px) var(--large, 12px);
 background: var(--Dark-Dark--80, #273343);
 }
@@ -477,7 +488,7 @@ overflow: hidden;
   border-radius: var(--large, 12px);
   background: var(--Light-Light--100, #FFF);
   z-index: 3;
-  width: 284px;
+  width: 319px;
 height: 41px;
 flex-shrink: 0;
 }
