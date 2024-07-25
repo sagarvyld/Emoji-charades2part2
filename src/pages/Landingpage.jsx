@@ -12,6 +12,7 @@ const Landingpage = ({skip , setskip}) => {
     const [topic,settopic]=useState('');
     const [answer,setanswer]=useState('');
     const [emojies,setemoji]=useState('');
+    const [data_it,setdata_it]=useState(null);
     const triggerConfetti = () => {
       setShowConfetti(true);
       setTimeout(() => setShowConfetti(false), 5000); 
@@ -63,7 +64,34 @@ const Landingpage = ({skip , setskip}) => {
         }
           setsend(true);
         }
+        const data = {
+          reqD: [
+            { topicArea: topic },
+            { topic: answer },
+            { Emoji: emojies },
+          ],
+          message: message,
+          isCorrect: right
+        };
+        const staging_url="https://vyld-cb-dev-api.vyld.io";
+        const url = `${staging_url}/api/v1/activity-games/game-response`;
+
+fetch(url, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json', 
+  },
+  body: JSON.stringify(data), 
+})
+  .then(response => response.json())
+  .then(result => {
+    console.log(result);
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
       };
+
     useEffect(()=>{
         if(isEmpty){
             setstyle({opacity:0.5});
