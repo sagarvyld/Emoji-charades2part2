@@ -2,13 +2,14 @@ import { useState } from 'react'
 import SkipBox from './components/SkipBox'
 import './App.css'
 import Landingpage from './pages/Landingpage'
+import TextareaWithKeyboard from './components/Keyboard';
 function App() {
 const [skip,setskip]=useState(false);
 
   return (
     <>
-      {skip &&<SkipBox skip={skip} setskip={setskip}/>}
-    <Landingpage skip={skip} setskip={setskip}/>
+     {skip &&<SkipBox skip={skip} setskip={setskip}/>}
+     <Landingpage skip={skip} setskip={setskip}/>
     </>
   )
 }

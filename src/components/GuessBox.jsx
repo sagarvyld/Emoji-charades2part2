@@ -31,29 +31,13 @@ const GuessBox = ({setIsEmpty, isEmpty ,setword , forward , send , right , word}
 
   const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
-      event.preventDefault(); 
+      event.preventDefault();
       if (textareaRef.current) {
         textareaRef.current.blur();
       }
     }
   };
 
-  useEffect(() => {
-    const textarea = textareaRef.current;
-    if (textarea) {
-      textarea.addEventListener('focus', handleFocus);
-      textarea.addEventListener('blur', handleBlur);
-      textarea.addEventListener('keypress', handleKeyPress);
-    }
-
-    return () => {
-      if (textarea) {
-        textarea.removeEventListener('focus', handleFocus);
-        textarea.removeEventListener('blur', handleBlur);
-        textarea.removeEventListener('keypress', handleKeyPress);
-      }
-    };
-  }, []);
     useEffect(()=>{
 setIsEmpty(true);
     },[])
@@ -234,12 +218,17 @@ setIsEmpty(true);
 </svg>
 </div>
 {!send &&<div className="guess_answer">
-  <textarea 
-  ref={textareaRef}
-
-  onChange={handleTextareaChange}
-  placeholder="Type answer here"></textarea>
-</div>
+  <textarea
+        ref={textareaRef}
+        onChange={handleTextareaChange}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        onKeyPress={handleKeyPress}
+        inputMode="text"
+        enterKeyHint="done"
+        placeholder="Type answer here"
+      ></textarea>
+      </div>
 }
 {send && <div className={`Movie_name ${right?'margin_it':''}`} style={colorStyle}>{right?"Venom vs Spiderman":word}</div>}
        {(send && !right &&

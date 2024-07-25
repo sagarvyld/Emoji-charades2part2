@@ -58,6 +58,7 @@ line-height: 0%;
   top: 53vh;
 }
 .SpotPage_Submit p{
+  transition: all 0.5s ease-in-out; 
   padding: 0px;
   margin: 0px;
 }
@@ -251,10 +252,9 @@ line-height: 100%;
   transition: width 0.5s ease-in-out, height 0.5s ease-in-out; 
   width: 350px;
   height: 297px;
-  position: absolute;
- 
 }
 ._realsvg{
+  transition: width 0.5s ease-in-out, height 0.5s ease-in-out; 
   display: flex;
   justify-content: space-between;
   border-radius: var(--large, 12px);
@@ -262,7 +262,6 @@ line-height: 100%;
 }
 
 .svg_answer {
-  width: 350px;
   height: 325px;
 }
 

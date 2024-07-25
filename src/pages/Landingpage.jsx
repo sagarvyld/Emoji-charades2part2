@@ -87,7 +87,7 @@ const Landingpage = ({skip , setskip}) => {
         <button className="SpotPage_Submit" onClick={()=>{forward()}}>
             <p style={style}>Send</p>
         </button>:
-        <button className="SpotPage_Submit">
+        <button className="SpotPage_Submit" onClick={()=>setsend(false)}>
         <p>Close</p>
     </button>
       )}
