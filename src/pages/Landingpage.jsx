@@ -60,16 +60,17 @@ const Landingpage = ({ skip, setskip }) => {
     }
   }, [right, send]);
  
-  const stopWords = ['the', 'of', 'a', 'an', 'in', 'on', 'at', 'to', 'and', 'with'];
+  const stopWords = ['the', 'a', 'an', 'in', 'at', 'to'];
 
-const normalizeString = str => {
-  return str
-    .toLowerCase()
-    .replace(/[^\w\s]/gi, '') 
-    .split(' ')
-    .filter(word => !stopWords.includes(word) && word) 
-    .join(' ');
-};
+  const normalizeString = str => {
+    return str
+      .toLowerCase()
+      .replace(/[^a-zA-Z0-9\s]/gi, '') 
+      .split(' ')
+      .filter(word => !stopWords.includes(word) && word) 
+      .map(word => word.endsWith('s') ? word.slice(0, -1) : word) 
+      .join(' ');
+  };
 
 const compareMovieTitles = (userInput, correctAnswer) => {
   const normalizedUserInput = normalizeString(userInput);
