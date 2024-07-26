@@ -61,26 +61,44 @@ const Landingpage = ({ skip, setskip }) => {
   }, [right, send]);
  
   const stopWords = ['the', 'a', 'an', 'in', 'at', 'to'];
-
+  const abbreviations = {
+    'dr': 'doctor',
+    'mr': 'mister',
+    'mrs': 'misses',
+    'st': 'street',
+    'jr': 'junior',
+    'sr': 'senior'
+  };
   const normalizeString = str => {
     return str
       .toLowerCase()
       .replace(/[^a-zA-Z0-9\s]/gi, '') 
       .split(' ')
       .filter(word => !stopWords.includes(word) && word) 
-      .map(word => word.endsWith('s') ? word.slice(0, -1) : word) 
+      .map(word => abbreviations[word] || word)
       .join(' ');
   };
 
-const compareMovieTitles = (userInput, correctAnswer) => {
-  const normalizedUserInput = normalizeString(userInput);
-  const normalizedCorrectAnswer = normalizeString(correctAnswer);
-  return normalizedUserInput === normalizedCorrectAnswer;
-};
+  const compareMovieTitles = (userInput, correctAnswer) => {
+    const normalizedUserInput = normalizeString(userInput);
+    const normalizedCorrectAnswer = normalizeString(correctAnswer);
+    if (normalizedUserInput === normalizedCorrectAnswer) {
+      return true;
+    }
+    const userWords = normalizedUserInput.split(' ');
+    const correctWords = normalizedCorrectAnswer.split(' ');
+    return userWords.every(userWord => {
+      return correctWords.some(correctWord => {
+        const similarity = stringSimilarity.compareTwoStrings(userWord, correctWord);
+        // console.log(`Comparing "${userWord}" with "${correctWord}": Similarity = ${similarity}`);
+        return similarity > 0.8;
+      });
+    });
+  };
   const forward = () => {
     // console.log("forward");
     if (!isEmpty) {
-      if (compareMovieTitles(answer.toLowerCase(), word.toLowerCase())) {
+      if (compareMovieTitles(word.toLowerCase(),answer.toLowerCase())) {
         setright(true);
       } else {
         setright(false);
