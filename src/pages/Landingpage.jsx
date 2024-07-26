@@ -76,7 +76,6 @@ const Landingpage = ({ skip, setskip }) => {
       .split(' ')
       .filter(word => !stopWords.includes(word) && word) 
       .map(word => abbreviations[word] || word)
-
   };
 
   const compareMovieTitles = (userInput, correctAnswer) => {
