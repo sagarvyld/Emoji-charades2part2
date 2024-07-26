@@ -40,7 +40,7 @@ const Landingpage = ({ skip, setskip }) => {
       })
       .then((data) => {
         const Data_coming = data.data;
-        // console.log(Data_coming);
+        console.log(Data_coming);
         setmessage(Data_coming.message);
         settopic(Data_coming.reqD[0].topicArea);
         setanswer(Data_coming.reqD[1].topic);
@@ -91,7 +91,7 @@ const Landingpage = ({ skip, setskip }) => {
       const correctWord = normalizedCorrectAnswer[index];
       const similarity = stringSimilarity.compareTwoStrings(userWord, correctWord);
       console.log(`Comparing "${userWord}" with "${correctWord}": Similarity = ${similarity}`);
-      return similarity > 0.8;
+      return similarity > 0.7;
     });
   };
   const forward = () => {

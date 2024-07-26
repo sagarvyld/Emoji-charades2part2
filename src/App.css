@@ -66,6 +66,7 @@ line-height: 0%;
 
 .emoji {
   font-size: 2rem; 
+  font-family: "Noto Color Emoji","Gilroy";
   display: inline-block; 
 }
 .SpotPage_Submit p{
