@@ -3,6 +3,7 @@ import GuessBox from "../components/GuessBox";
 import profile from "../assets/Profile.png";
 import { useState, useEffect } from "react";
 import Confetti from "react-confetti";
+import stringSimilarity from 'string-similarity';
 import RightGuess from "./RightGuess";
 const Landingpage = ({ skip, setskip }) => {
   const [word, setword] = useState("");
@@ -58,116 +59,27 @@ const Landingpage = ({ skip, setskip }) => {
       triggerConfetti();
     }
   }, [right, send]);
-  function removeCommonWords(words) {
-    const commonWords = new Set([
-      "a",
-      "an",
-      "the",
-      "of",
-      "and",
-      "to",
-      "in",
-      "on",
-      "for",
-      "with",
-    ]);
-    return words.filter((word) => !commonWords.has(word));
-  }
+ 
+  const stopWords = ['the', 'of', 'a', 'an', 'in', 'on', 'at', 'to', 'and', 'with'];
 
-  function isPartialMatch(movieWords, userWords) {
-    let AnsLen = movieWords.length;
-    
-    if (AnsLen > 3) {
-        let m = 0;
-        const movieSet = new Set(movieWords);
-        const userSet = new Set(userWords);
-        
-        for (let word of userSet) {
-            if (movieSet.has(word)) {
-                m++;
-            }
-        }
-        return (m === AnsLen || m === AnsLen - 1);
-    } else {
-        let m = 0;
-        const movieSet = new Set(movieWords);
-        const userSet = new Set(userWords);
-        
-        for (let word of userSet) {
-            if (movieSet.has(word)) {
-                m++;
-            }
-        }
-        return (m === AnsLen);
-    }
-}
+const normalizeString = str => {
+  return str
+    .toLowerCase()
+    .replace(/[^\w\s]/gi, '') 
+    .split(' ')
+    .filter(word => !stopWords.includes(word) && word) 
+    .join(' ');
+};
 
-  function isFlexibleOrderMatch(movieWords, userWords) {
-    return movieWords.sort().join(" ") === userWords.sort().join(" ");
-  }
-
-  function isCommonAbbreviationMatch(movieName, userInput) {
-    const abbreviations = {
-      doctor: "dr",
-      saint: "st",
-      mount: "mt",
-      street: "st",
-      fort: "ft",
-    };
-
-    for (let [full, abbrev] of Object.entries(abbreviations)) {
-      if (movieName.includes(full) && userInput.includes(abbrev)) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  function isMinorMisspellingMatch(movieWords, userWords) {
-    if (movieWords.length !== userWords.length) return false;
-
-    let count = 0;
-    for (let i = 0; i < movieWords.length; i++) {
-      if (movieWords[i] !== userWords[i]) {
-        count++;
-        if (count > 1) {
-          return false;
-        }
-      }
-    }
-    return count <= 1;
-  }
-
-  function isCorrectGuess(movieName, userInput) {
-    console.log("checking1");
-    movieName = movieName.toLowerCase().trim();
-    userInput = userInput.toLowerCase().trim();
-    const movieWords = removeCommonWords(movieName.split(/\W+/));
-    console.log("mov", movieWords);
-    const userWords = removeCommonWords(userInput.split(/\W+/));
-    if (movieName === userInput) {
-      return true;
-    }
-    if (isPartialMatch(movieWords, userWords)) {
-      return true;
-    }
-    if (isFlexibleOrderMatch(movieWords, userWords)) {
-      return true;
-    }
-    if (isCommonAbbreviationMatch(movieName, userInput)) {
-      console.log("ca", isCommonAbbreviationMatch(movieName, userInput));
-      return true;
-    }
-    if (isMinorMisspellingMatch(movieWords, userWords)) {
-      return true;
-    }
-
-    return false;
-  }
+const compareMovieTitles = (userInput, correctAnswer) => {
+  const normalizedUserInput = normalizeString(userInput);
+  const normalizedCorrectAnswer = normalizeString(correctAnswer);
+  return normalizedUserInput === normalizedCorrectAnswer;
+};
   const forward = () => {
     console.log("forward");
     if (!isEmpty) {
-      if (isCorrectGuess(answer.toLowerCase(), word.toLowerCase())) {
+      if (compareMovieTitles(answer.toLowerCase(), word.toLowerCase())) {
         setright(true);
       } else {
         setright(false);
