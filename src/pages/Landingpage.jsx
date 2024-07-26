@@ -76,23 +76,23 @@ const Landingpage = ({ skip, setskip }) => {
       .split(' ')
       .filter(word => !stopWords.includes(word) && word) 
       .map(word => abbreviations[word] || word)
-      .join(' ');
+
   };
 
   const compareMovieTitles = (userInput, correctAnswer) => {
     const normalizedUserInput = normalizeString(userInput);
     const normalizedCorrectAnswer = normalizeString(correctAnswer);
-    if (normalizedUserInput === normalizedCorrectAnswer) {
+  
+    if (normalizedUserInput.join(' ') === normalizedCorrectAnswer.join(' ')) {
       return true;
     }
-    const userWords = normalizedUserInput.split(' ');
-    const correctWords = normalizedCorrectAnswer.split(' ');
-    return userWords.every(userWord => {
-      return correctWords.some(correctWord => {
-        const similarity = stringSimilarity.compareTwoStrings(userWord, correctWord);
-        // console.log(`Comparing "${userWord}" with "${correctWord}": Similarity = ${similarity}`);
-        return similarity > 0.8;
-      });
+
+    return normalizedUserInput.every((userWord, index) => {
+      if (index >= normalizedCorrectAnswer.length) return false; 
+      const correctWord = normalizedCorrectAnswer[index];
+      const similarity = stringSimilarity.compareTwoStrings(userWord, correctWord);
+      console.log(`Comparing "${userWord}" with "${correctWord}": Similarity = ${similarity}`);
+      return similarity > 0.8;
     });
   };
   const forward = () => {
