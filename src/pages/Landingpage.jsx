@@ -40,7 +40,7 @@ const Landingpage = ({ skip, setskip }) => {
       })
       .then((data) => {
         const Data_coming = data.data;
-        console.log(Data_coming);
+        // console.log(Data_coming);
         setmessage(Data_coming.message);
         settopic(Data_coming.reqD[0].topicArea);
         setanswer(Data_coming.reqD[1].topic);
@@ -78,7 +78,7 @@ const compareMovieTitles = (userInput, correctAnswer) => {
   return normalizedUserInput === normalizedCorrectAnswer;
 };
   const forward = () => {
-    console.log("forward");
+    // console.log("forward");
     if (!isEmpty) {
       if (compareMovieTitles(answer.toLowerCase(), word.toLowerCase())) {
         setright(true);
@@ -104,7 +104,7 @@ const compareMovieTitles = (userInput, correctAnswer) => {
     })
       .then((response) => response.json())
       .then((result) => {
-        console.log(result);
+        // console.log(result);
       })
       .catch((error) => {
         console.error("Error:", error);
