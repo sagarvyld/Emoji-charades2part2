@@ -25,13 +25,15 @@ const Landingpage = ({ skip, setskip }) => {
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const url = "https://vyld-cb-dev-api.vyld.io/api/v1/activity-games/game";
-    const params = new URLSearchParams({
-      activityId: urlParams.get("activityId"),
-    });
-    fetch(`${url}?${params}`, {
-      method: "GET",
-      headers: {},
-    })
+    const activityId = urlParams.get("activityId");
+const urlWithParams = activityId 
+    ? `${url}?activityId=${activityId}` 
+    : url;
+
+fetch(urlWithParams, {
+    method: "GET",
+    headers: {},
+})
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -41,10 +43,10 @@ const Landingpage = ({ skip, setskip }) => {
       .then((data) => {
         const Data_coming = data.data;
         console.log(Data_coming);
-        setmessage(Data_coming.message);
-        settopic(Data_coming.reqD[0].topicArea);
-        setanswer(Data_coming.reqD[1].topic);
-        setemoji(Data_coming.reqD[2].Emoji);
+        setmessage(Data_coming.ActD.message);
+        settopic(Data_coming.ActD.reqD[0].topicArea);
+        setanswer(Data_coming.ActD.reqD[1].topic);
+        setemoji(Data_coming.ActD.reqD[2].Emoji);
       })
       .catch((error) => {
         console.error("Error:", error);
